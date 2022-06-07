@@ -1,0 +1,116 @@
+{
+    "name": "storybook-sandbox",
+    "version": "0.0.1",
+    "description": "A simple Storybook React components playground",
+    "main": "dist/index.js",
+    "files": [
+      "dist",
+      "README.md"
+    ],
+    "outputDir": "./dist",
+    "sideEffects": [
+      "**/*.css"
+    ],
+    "scripts": {
+      "storybook": "start-storybook -p 6006",
+      "storybook:docker": "cross-env NODE_OPTIONS='--openssl-legacy-provider' start-storybook -p 6006",
+      "build-storybook": "build-storybook",
+      "lint": "eslint src/**/*.ts src/**/*.tsx",
+      "lint:fix": "eslint src/**/*.ts src/**/*.tsx --fix",
+      "prebuild": "rimraf dist",
+      "build": "rollup -c",
+      "postbuild": "node scripts/resolveTsPaths",
+      "build:local": "npm run build && npm pack",
+      "build:publish": "npm run build && npm publish",
+      "release:patch": "standard-version --release-as patch",
+      "release:minor": "standard-version --release-as minor",
+      "release:major": "standard-version --release-as major",
+      "release:pre:alpha": "standard-version --prerelease alpha"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "husky": {
+      "hooks": {
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      }
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/younes-barhouni/storybook-sandbox.git"
+    },
+    "keywords": [
+      "Storybook",
+      "Playground",
+      "React",
+      "Sandbox"
+    ],
+    "author": "Younes barhouni <younesbarhouni@live.com> (https://github.com/younes-barhouni)",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/younes-barhouni/storybook-sandbox/issues"
+    },
+    "homepage": "https://github.com/younes-barhouni/storybook-sandbox#readme",
+    "devDependencies": {
+      "@commitlint/cli": "17.0.2",
+      "@commitlint/config-conventional": "17.0.2",
+      "@rollup/plugin-commonjs": "22.0.0",
+      "@rollup/plugin-node-resolve": "13.3.0",
+      "@rollup/plugin-typescript": "8.3.2",
+      "@storybook/addon-essentials": "6.5.7",
+      "@storybook/addon-storysource": "6.5.7",
+      "@storybook/addons": "6.5.7",
+      "@storybook/react": "6.5.7",
+      "@storybook/theming": "6.5.7",
+      "@types/lodash-es": "4.17.6",
+      "@types/react-dom": "18.0.5",
+      "@types/styled-components": "5.1.25",
+      "@typescript-eslint/eslint-plugin": "4.17.0",
+      "@typescript-eslint/parser": "5.27.1",
+      "cross-env": "7.0.3",
+      "css-loader": "6.7.1",
+      "eslint": "8.17.0",
+      "eslint-config-airbnb": "19.0.4",
+      "eslint-config-airbnb-typescript": "17.0.0",
+      "eslint-import-resolver-typescript": "2.7.1",
+      "eslint-loader": "4.0.2",
+      "eslint-plugin-import": "2.26.0",
+      "eslint-plugin-jsx-a11y": "6.5.1",
+      "eslint-plugin-react": "7.30.0",
+      "eslint-plugin-react-hooks": "4.5.0",
+      "eslint-plugin-storybook": "0.5.12",
+      "file-loader": "6.2.0",
+      "husky": "8.0.1",
+      "lodash-es": "4.17.21",
+      "postcss": "8.4.14",
+      "react": "18.1.0",
+      "react-dom": "18.1.0",
+      "rimraf": "3.0.2",
+      "rollup": "2.75.6",
+      "rollup-plugin-peer-deps-external": "2.2.4",
+      "rollup-plugin-postcss": "4.0.2",
+      "rollup-plugin-terser": "7.0.2",
+      "rollup-plugin-visualizer": "5.6.0",
+      "sass": "1.52.2",
+      "sass-loader": "13.0.0",
+      "standard-version": "9.5.0",
+      "style-loader": "3.3.1",
+      "styled-components": "5.3.5",
+      "ts-loader": "9.3.0",
+      "tslib": "2.4.0",
+      "typescript": "4.7.3",
+      "webpack": "5.73.0",
+      "webpack-cli": "4.9.2",
+      "webpack-dev-server": "4.9.2"
+    },
+    "peerDependencies": {
+      "lodash-es": ">=4",
+      "react": ">=16.13.1",
+      "react-dom": ">=16.13.1",
+      "styled-components": ">= 3"
+    },
+    "resolutions": {
+      "styled-components": "^5"
+    }
+  }
+  
