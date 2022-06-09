@@ -1,9 +1,9 @@
-FROM node:17-alpine3.12
+FROM node:18-alpine3.15
 
 WORKDIR /app
 
 COPY . .
 
-RUN npm install
+RUN npm install --force
 
 CMD ["npm", "run", "storybook:docker"]
