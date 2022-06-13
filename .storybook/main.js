@@ -2,17 +2,22 @@ const path = require('path');
 
 module.exports = {
   "stories": [
+    "../src/**/*.diagrams.mdx",
     "../src/**/*.stories.mdx",
     "../src/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   "addons": [
     "@storybook/addon-essentials",
+    "@storybook/addon-a11y",
+    "@storybook/addon-interactions",
   ],
+  staticDirs: ['../assets'],
   webpackFinal: async (config, { configType }) => {
     config.resolve = {
       ...(config.resolve || {}),
-      extensions: ['.ts', '.tsx', '.js'],
+      extensions: ['.ts', '.tsx', '.js', '.mdx'],
       alias: {
+        "assets": path.resolve(__dirname, '../src', 'assets'),
         "common": path.resolve(__dirname, '../src', 'common'),
         "components": path.resolve(__dirname, '../src', 'components'),
         "hooks": path.resolve(__dirname, '../src', 'hooks'),
@@ -36,7 +41,16 @@ module.exports = {
         'sass-loader'
       ],
       include: path.resolve(__dirname, '../'),
-    });
+    },
+    {
+      test: /\.(png|jpg|jpeg|svg|gif|eot|otf|ttf|woff|woff2)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+        },
+      ],
+    },
+    );
 
     if (process.env.NODE_ENV === 'Docker') {
       config.watchOptions = {
