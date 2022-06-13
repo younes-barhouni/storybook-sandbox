@@ -11,6 +11,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text?: string;
   variant?: ButtonType;
   onClick?: () => void;
+  backgroundColor?: string;
 }
 
 const getButtonComponent = (type: ButtonType) => {
@@ -41,6 +42,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       text,
       variant,
       onClick,
+      backgroundColor,
       ...passThrough
     } = props;
 
@@ -50,6 +52,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Component
         ref={ref}
         onClick={onClick}
+        style={{ backgroundColor }}
         {...passThrough}
       >
         {children ?? text}
